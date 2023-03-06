@@ -1,0 +1,97 @@
+# depslib dependency file v1.0
+1678004753 source:d:\code\banga\firechicken\main.cpp
+	"Boardgame.h"
+	"Object.h"
+	"Plane.h"
+	"Bullet.h"
+	"Enemy.h"
+
+1678004753 source:d:\code\banga\firechicken\boardgame.cpp
+	"Boardgame.h"
+	<bits/stdc++.h>
+	<SDL.h>
+	<SDL_image.h>
+
+1678004753 d:\code\banga\firechicken\boardgame.h
+	<bits/stdc++.h>
+	<SDL.h>
+	<SDL_image.h>
+
+1677918424 d:\code\banga\firechicken\object.h
+	"Boardgame.h"
+
+1677920660 source:d:\code\banga\firechicken\object.cpp
+	"Object.h"
+	"Boardgame.h"
+
+1678001686 source:d:\code\banga\firechicken\plane.cpp
+	"Plane.h"
+	"Object.h"
+	"Bullet.h"
+
+1677920841 d:\code\banga\firechicken\plane.h
+	"Object.h"
+	"Bullet.h"
+
+1677919851 d:\code\banga\firechicken\bullet.h
+	"Object.h"
+
+1678000885 source:d:\code\banga\firechicken\bullet.cpp
+	"Bullet.h"
+	"Object.h"
+
+1678006416 source:d:\code\banga\firechicken\enemy.cpp
+	"Enemy.h"
+
+1678004804 d:\code\banga\firechicken\enemy.h
+	"Object.h"
+	"Bullet.h"
+
+1678004753 source:d:\code\banga\firemonster\boardgame.cpp
+	"Boardgame.h"
+	<bits/stdc++.h>
+	<SDL.h>
+	<SDL_image.h>
+
+1678004753 d:\code\banga\firemonster\boardgame.h
+	<bits/stdc++.h>
+	<SDL.h>
+	<SDL_image.h>
+
+1678000885 source:d:\code\banga\firemonster\bullet.cpp
+	"Bullet.h"
+	"Object.h"
+
+1677919851 d:\code\banga\firemonster\bullet.h
+	"Object.h"
+
+1677918424 d:\code\banga\firemonster\object.h
+	"Boardgame.h"
+
+1678083515 source:d:\code\banga\firemonster\enemy.cpp
+	"Enemy.h"
+
+1678004804 d:\code\banga\firemonster\enemy.h
+	"Object.h"
+	"Bullet.h"
+
+1678083691 source:d:\code\banga\firemonster\main.cpp
+	"Boardgame.h"
+	"Object.h"
+	"Plane.h"
+	"Bullet.h"
+	"Enemy.h"
+
+1677920841 d:\code\banga\firemonster\plane.h
+	"Object.h"
+	"Bullet.h"
+
+1677920660 source:d:\code\banga\firemonster\object.cpp
+	"Object.h"
+	"Boardgame.h"
+
+1678083587 source:d:\code\banga\firemonster\plane.cpp
+	"Plane.h"
+	"Object.h"
+	"Bullet.h"
+
