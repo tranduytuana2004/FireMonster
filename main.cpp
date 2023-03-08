@@ -18,21 +18,24 @@ int main(int argc, char* argv[])
 
     SDL_Texture* Background = loadTexture(renderer, "D:\\Code\\banga\\FireMonster\\image\\background.png");
 
-    Plane plane(renderer,"D:\\Code\\banga\\FireMonster\\image\\SpaceThreat1.png");
+    Plane plane(renderer,"D:\\Code\\banga\\FireMonster\\image\\Plane.png");
 
     vector<Enemy> list_enemy;
-	for (int i = 1; i < 4; i++) {
-		Enemy enemy(renderer, i);
+	for (int i = 1; i < NUMBER_OF_ENEMY; i++) {
+        int type = rand() % (3-1+1)+1;
+		Enemy enemy(renderer, type);
 
-		int x = rand() % (SCREEN_WIDTH - enemy.getRect().w);
-		if (x < enemy.getRect().w) x = enemy.getRect().w;
+		int x = rand() % (SCREEN_WIDTH - enemy.getRect().w );
+		if (x < enemy.getRect().w)
+        {
+            x = enemy.getRect().w;
+        }
 
-		int y = rand() % SCREEN_HEIGHT/4;
+		int y = 0; //rand() % SCREEN_HEIGHT / 100;
 
 		enemy.setPos(x, y);
 		list_enemy.push_back(enemy);
 	}
-
 
     while(!quit)
     {
@@ -46,15 +49,21 @@ int main(int argc, char* argv[])
         }
 
         SDL_RenderClear(renderer);
+
         SDL_RenderCopy(renderer, Background, NULL, NULL);
+
         plane.update(renderer);
-        for (int i = 0; i < 3; i++) {
-			if (!list_enemy.at(i).isKilled()) {
-				if (checkCollision(list_enemy.at(i).getRect(), plane.getRectBullet())) {
+
+        for (int i = 0; i < NUMBER_OF_ENEMY - 1; i++)
+        {
+			if (!list_enemy.at(i).isKilled())
+			{
+				if (checkCollision(list_enemy.at(i).getRect(), plane.getRectBullet()))
+                {
 					list_enemy.at(i).kill();
 						//score += 100;
+						plane.clear_bullet();
 						break;
-						//plane.getBullet().setStatus(false);
 				}
 				list_enemy.at(i).update(renderer);
 			}

@@ -8,13 +8,16 @@ class Bullet : public Object
 private:
     int x;
     int y;
-    bool isMove;
     int speed;
+    bool isMove;
 
 public:
+
     Bullet();
 
-    void fire();
+    void plane_fire();
+
+    void enemy_fire();
 
     void setStatus(bool _isMove);
 

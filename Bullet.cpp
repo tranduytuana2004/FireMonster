@@ -6,18 +6,24 @@ Bullet::Bullet()
     x = 0;
     y = 0;
     isMove = false;
-    speed = 20;
-    rect.w = 15;
-    rect.h = 50;
 }
 
-void Bullet::fire()
+void Bullet::plane_fire()
 {
     if( rect.y < -rect.h )
     {
         isMove = false;
     }
-    rect.y -= speed;
+    rect.y -= SPEED_BULLET_PLANE;
+}
+
+void Bullet::enemy_fire()
+{
+    if( rect.y > SCREEN_HEIGHT )
+    {
+        isMove = false;
+    }
+    rect.y += SPEED_BULLET_ENEMY;
 }
 
 void Bullet::setStatus(bool _isMove)

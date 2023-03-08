@@ -38,3 +38,9 @@ void Object::setPos(int x, int y)
     rect.x = x;
     rect.y = y;
 }
+
+void Object::setSize(int w, int h)
+{
+    rect.w = w;
+    rect.h = h;
+}

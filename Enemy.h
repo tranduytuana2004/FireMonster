@@ -9,7 +9,7 @@ class Enemy : public Object
 private:
     int x;
     int y;
-    Bullet bullet;
+    Bullet list_bullets;
     bool alive;
 public:
     Enemy(SDL_Renderer* renderer, int i);
@@ -19,13 +19,16 @@ public:
 
     }
 
-    void move(SDL_Event event);
-
     void update(SDL_Renderer* renderer);
 
     void kill()
     {
         alive = false;
+    }
+
+    SDL_Rect getRectBullet()
+    {
+        return list_bullets.getRect();
     }
 
     bool isKilled()

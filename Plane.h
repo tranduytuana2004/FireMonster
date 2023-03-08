@@ -9,7 +9,7 @@ class Plane : public Object
 private :
     int x;
     int y;
-    Bullet bullet;
+    Bullet list_bullets;
 
 public :
     Plane();
@@ -22,10 +22,7 @@ public :
 
     SDL_Rect getRectBullet();
 
-    Bullet getBullet()
-    {
-        return bullet;
-    }
+    void clear_bullet();
 
     ~Plane();
 };

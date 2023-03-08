@@ -14,9 +14,13 @@ Plane::Plane(SDL_Renderer* renderer, string path)
     y = SCREEN_HEIGHT *3 / 4;
 
     setPos(x,y);
+
     setImg(renderer, path);
-    bullet.setImg(renderer, "D:\\Code\\banga\\FireMonster\\image\\BulletThreat.png");
-    bullet.setPos(x,y);
+
+    list_bullets.setImg(renderer, "D:\\Code\\banga\\FireMonster\\image\\Bullet.png");
+
+    list_bullets.setPos(x,y);
+    list_bullets.setSize(WIDTH_BULLET_PLANE,HEIGHT_BULLET_PLANE);
 }
 
 void Plane::move(SDL_Event event)
@@ -28,10 +32,10 @@ void Plane::move(SDL_Event event)
     }
     if( event.type == SDL_MOUSEBUTTONDOWN )
     {
-        if( !bullet.is_Move() )
+        if( !list_bullets.is_Move() )
         {
-            bullet.setPos(rect.x + rect.w/2 - bullet.getRect().w/2, rect.y + bullet.getRect().h);
-            bullet.setStatus(true);
+            list_bullets.setPos(rect.x + rect.w/2 - list_bullets.getRect().w/2, rect.y +15);
+            list_bullets.setStatus(true);
         }
     }
 }
@@ -40,16 +44,22 @@ void Plane::update(SDL_Renderer* renderer)
 {
     show(renderer);
 
-    if( bullet.is_Move())
+    if( list_bullets.is_Move())
     {
-        bullet.fire();
-        bullet.show(renderer);
+        list_bullets.plane_fire();
+        list_bullets.show(renderer);
     }
+}
+
+void Plane::clear_bullet()
+{
+    list_bullets.setPos(0,0);
+    list_bullets.setStatus(false);
 }
 
 SDL_Rect Plane::getRectBullet()
 {
-    return bullet.getRect();
+    return list_bullets.getRect();
 }
 
 Plane::~Plane()

@@ -21,6 +21,8 @@ public:
 
     void setPos(int x, int y);
 
+    void setSize(int w, int h);
+
     SDL_Rect getRect() const
     {
         return rect;
