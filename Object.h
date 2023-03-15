@@ -19,13 +19,14 @@ public:
 
     void setImg(SDL_Renderer* renderer, string path);
 
-    void setPos(int x, int y);
+    void setPos(int _x, int _y);
 
-    void setSize(int w, int h);
+    void setSize(int _w, int _h);
 
     SDL_Rect getRect() const
     {
         return rect;
     }
+    void Free();
 };
 #endif // OBJECT_H

@@ -17,23 +17,35 @@ Enemy::Enemy(SDL_Renderer* renderer, int i)
 
     list_bullets.setImg(renderer, "D:\\Code\\banga\\FireMonster\\image\\bulletenemy" + to_string(i) + ".png");
 
-    list_bullets.setPos(rect.x + rect.w/2 - list_bullets.getRect().w/2, rect.y +15);
-
     list_bullets.setSize(WIDTH_BULLET_ENEMY,HEIGHT_BULLET_ENEMY);
 }
 
+void Enemy::kill()
+{
+    alive = false;
+}
+
+SDL_Rect Enemy::getRectBullet()
+{
+    return list_bullets.getRect();
+}
 void Enemy::update(SDL_Renderer* renderer)
 {
+    if( !list_bullets.is_Move())
+        {
+            list_bullets.setStatus(true);
+
+            list_bullets.setPos(rect.x + rect.w/2, rect.y +15);
+        }
+
     if( alive )
     {
         rect.y ++; //Cho enemy chạy xuống
 
-       // show(renderer);
-        list_bullets.setStatus(true);
-
         if( list_bullets.is_Move())
         {
             list_bullets.enemy_fire();
+
             list_bullets.show(renderer);
         }
 
@@ -52,4 +64,15 @@ void Enemy::update(SDL_Renderer* renderer)
 
         show(renderer);
     }
+}
+
+void Enemy::clear_bullet()
+{
+    list_bullets.setPos(0,0);
+    list_bullets.setStatus(false);
+}
+
+bool Enemy::isKilled()
+{
+    return !alive;
 }

@@ -62,6 +62,11 @@ SDL_Rect Plane::getRectBullet()
     return list_bullets.getRect();
 }
 
+void Plane::kill()
+{
+
+}
+
 Plane::~Plane()
 {
 

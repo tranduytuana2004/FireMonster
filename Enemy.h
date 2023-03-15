@@ -21,19 +21,12 @@ public:
 
     void update(SDL_Renderer* renderer);
 
-    void kill()
-    {
-        alive = false;
-    }
+    void kill();
 
-    SDL_Rect getRectBullet()
-    {
-        return list_bullets.getRect();
-    }
+    SDL_Rect getRectBullet();
 
-    bool isKilled()
-    {
-        return !alive;
-    }
+    bool isKilled();
+
+    void clear_bullet();
 };
 #endif // ENEMY_H

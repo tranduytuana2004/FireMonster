@@ -10,8 +10,10 @@ private :
     int x;
     int y;
     Bullet list_bullets;
-
+    bool alive;
 public :
+    int hp = HP_DEFAULT;
+
     Plane();
 
     Plane(SDL_Renderer* renderer, string path);
@@ -23,6 +25,10 @@ public :
     SDL_Rect getRectBullet();
 
     void clear_bullet();
+
+    void kill();
+
+    bool get_alive() const {return alive;}
 
     ~Plane();
 };
