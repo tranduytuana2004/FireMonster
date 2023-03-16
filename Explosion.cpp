@@ -55,7 +55,7 @@ void Explosion::set_frame( const int& _frame )
 
 void Explosion::showEx( SDL_Renderer* renderer )
 {
-    if( frame >= 8 )
+    if( frame >= NUM_OF_FRAME )
     {
         frame = 0;
     }

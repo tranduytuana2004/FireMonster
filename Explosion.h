@@ -7,7 +7,7 @@ class Explosion : public Object
 {
 private:
    int frame;
-   SDL_Rect clip[8];
+   SDL_Rect clip[NUM_OF_FRAME];
 public:
    Explosion( SDL_Renderer*, string path );
 

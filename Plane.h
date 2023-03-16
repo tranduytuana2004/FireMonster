@@ -10,8 +10,9 @@ private :
     int x;
     int y;
     Bullet list_bullets;
-    bool alive;
 public :
+    bool isShot;
+
     int hp = HP_DEFAULT;
 
     Plane();
@@ -25,8 +26,6 @@ public :
     SDL_Rect getRectBullet();
 
     void clear_bullet();
-
-    bool get_alive() const {return alive;}
 
     ~Plane();
 };

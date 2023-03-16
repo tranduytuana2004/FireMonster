@@ -108,5 +108,5 @@ void BG::loadRendererClip(SDL_Texture* body, SDL_Renderer* renderer, SDL_Rect* c
     SDL_Rect offset;
     offset.x = x;
     offset.y = y;
-    SDL_RenderCopy(renderer,body,NULL,&offset);
+    SDL_RenderCopy(renderer,body,clip,&offset);
 }

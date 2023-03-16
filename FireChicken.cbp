@@ -38,6 +38,8 @@
 		<Unit filename="Bullet.h" />
 		<Unit filename="Enemy.cpp" />
 		<Unit filename="Enemy.h" />
+		<Unit filename="Explosion.cpp" />
+		<Unit filename="Explosion.h" />
 		<Unit filename="Object.cpp" />
 		<Unit filename="Object.h" />
 		<Unit filename="Plane.cpp" />

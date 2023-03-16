@@ -6,12 +6,15 @@ Plane::Plane()
 {
     x = 0;
     y = 0;
+    //isShot = false;
 }
 
 Plane::Plane(SDL_Renderer* renderer)
 {
     x = SCREEN_WIDTH / 2;
     y = SCREEN_HEIGHT *3 / 4;
+
+    isShot = false;
 
     setPos(x,y);
 
@@ -42,7 +45,10 @@ void Plane::move(SDL_Event event)
 
 void Plane::update(SDL_Renderer* renderer)
 {
-    show(renderer);
+    if( !isShot )
+    {
+        show(renderer);
+    }
 
     if( list_bullets.is_Move())
     {

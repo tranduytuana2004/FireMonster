@@ -95,13 +95,13 @@
 	"Object.h"
 	"Bullet.h"
 
-1678973339 source:c:\users\asus\onedrive\documents\github\ltnc_main\firemonster\fire_monster\boardgame.cpp
+1678976935 source:c:\users\asus\onedrive\documents\github\ltnc_main\firemonster\fire_monster\boardgame.cpp
 	"Boardgame.h"
 	<bits/stdc++.h>
 	<SDL.h>
 	<SDL_image.h>
 
-1678974430 c:\users\asus\onedrive\documents\github\ltnc_main\firemonster\fire_monster\boardgame.h
+1678975953 c:\users\asus\onedrive\documents\github\ltnc_main\firemonster\fire_monster\boardgame.h
 	<bits/stdc++.h>
 	<SDL.h>
 	<SDL_image.h>
@@ -123,7 +123,7 @@
 	"Object.h"
 	"Bullet.h"
 
-1678975309 source:c:\users\asus\onedrive\documents\github\ltnc_main\firemonster\fire_monster\main.cpp
+1678981982 source:c:\users\asus\onedrive\documents\github\ltnc_main\firemonster\fire_monster\main.cpp
 	"Boardgame.h"
 	"Object.h"
 	"Plane.h"
@@ -131,7 +131,7 @@
 	"Enemy.h"
 	"Explosion.h"
 
-1678973408 c:\users\asus\onedrive\documents\github\ltnc_main\firemonster\fire_monster\plane.h
+1678980822 c:\users\asus\onedrive\documents\github\ltnc_main\firemonster\fire_monster\plane.h
 	"Object.h"
 	"Bullet.h"
 
@@ -139,14 +139,14 @@
 	"Object.h"
 	"Boardgame.h"
 
-1678973408 source:c:\users\asus\onedrive\documents\github\ltnc_main\firemonster\fire_monster\plane.cpp
+1678980843 source:c:\users\asus\onedrive\documents\github\ltnc_main\firemonster\fire_monster\plane.cpp
 	"Plane.h"
 	"Object.h"
 	"Bullet.h"
 
-1678898449 c:\users\asus\onedrive\documents\github\ltnc_main\firemonster\fire_monster\explosion.h
+1678976096 c:\users\asus\onedrive\documents\github\ltnc_main\firemonster\fire_monster\explosion.h
 	"Object.h"
 
-1678974409 source:c:\users\asus\onedrive\documents\github\ltnc_main\firemonster\fire_monster\explosion.cpp
+1678975953 source:c:\users\asus\onedrive\documents\github\ltnc_main\firemonster\fire_monster\explosion.cpp
 	"Explosion.h"
 

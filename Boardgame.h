@@ -21,6 +21,7 @@ static const int SPEED_BULLET_ENEMY = 2;
 static const int HP_DEFAULT = 5;
 static const double EXPLOSION_WIDTH = 85;
 static const double EXPLOSION_HEIGHT = 51;
+static const int NUM_OF_FRAME = 8;
 
 namespace BG
 {

@@ -24,14 +24,17 @@ int main(int argc, char* argv[])
     Plane plane(renderer);
 
     Explosion exp_plane(renderer,"C:\\Users\\ASUS\\OneDrive\\Documents\\GitHub\\LTNC_main\\FireMonster\\Fire_Monster\\image\\BlurPlane.png");
-
     exp_plane.set_clip();
+    int ex;
+
     vector<Enemy> list_enemy;
-	for(int i = 1; i < NUMBER_OF_ENEMY; i++) {
+	for(int i = 1; i < NUMBER_OF_ENEMY; i++)
+    {
         int type = rand() % (3-1+1)+1;
 		Enemy enemy(renderer, type);
 
 		int x = rand() % (SCREEN_WIDTH - enemy.getRect().w );
+
 		if( x < enemy.getRect().w )
         {
             x = enemy.getRect().w;
@@ -69,7 +72,6 @@ int main(int argc, char* argv[])
         }
 
         SDL_RenderCopy(renderer, Background, NULL, &up_backgr1);
-
         plane.update(renderer);
 
         for (int i = 0; i < NUMBER_OF_ENEMY - 1; i++)
@@ -83,35 +85,41 @@ int main(int argc, char* argv[])
 						plane.clear_bullet();
 						break;
 				}
+
 				if( checkCollision( list_enemy.at(i).getRectBullet(), plane.getRect() ) )
                 {
-                    -- plane.hp;
-                    for(int ex = 0; ex < 8; ex++)
-                    {
-                        int x_pos = plane.getRect().x +  plane.getRect().w; - EXPLOSION_WIDTH;
-                        int y_pos = plane.getRect().y +  plane.getRect().h; - EXPLOSION_HEIGHT;
+                    --plane.hp;
+                    list_enemy.at(i).clear_bullet();
 
-                        exp_plane.set_frame(ex);
-                        exp_plane.setPos(x_pos,y_pos);
-                        exp_plane.showEx(renderer);
-                        SDL_Delay(100);
-                        SDL_RenderPresent(renderer);
-                    }
+                    plane.isShot = true;
+                    ex = 0;
+                    int x_pos = plane.getRect().x;
+                    int y_pos = plane.getRect().y;
+                    exp_plane.setPos(x_pos, y_pos);
+
                     if( plane.hp == 0 )
                     {
-                        plane.setPos(0,0);
-                        plane.setSize(0,0);
                         quit = true;
                     }
-                    list_enemy.at(i).clear_bullet();
-                    break;
                 }
-				list_enemy.at(i).update(renderer);
+                list_enemy.at(i).update(renderer);
 			}
 		}
+		if ( ex < NUM_OF_FRAME )
+        {
+            exp_plane.set_frame(ex);
+            exp_plane.showEx(renderer);
+            ex++;
+        }
+        else
+        {
+            plane.isShot = false;
+        }
+
         SDL_RenderPresent(renderer);
     }
 
     quitSDL(window, renderer);
+
     return 0;
 }
