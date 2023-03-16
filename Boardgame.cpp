@@ -64,44 +64,49 @@ SDL_Texture* BG::loadTexture(SDL_Renderer* renderer, string path)
 
 bool BG::checkCollision(SDL_Rect a, SDL_Rect b)
 {
-    //The sides of the rectangles
     int leftA, leftB;
     int rightA, rightB;
     int topA, topB;
     int bottomA, bottomB;
 
-    //Calculate the sides of rect A
     leftA = a.x;
     rightA = a.x + a.w;
     topA = a.y;
     bottomA = a.y + a.h;
 
-    //Calculate the sides of rect B
     leftB = b.x;
     rightB = b.x + b.w;
     topB = b.y;
     bottomB = b.y + b.h;
-        //If any of the sides from A are outside of B
-        if (bottomA <= topB)
+
+        if ( bottomA <= topB )
         {
             return false;
         }
 
-    if (topA >= bottomB)
+    if ( topA >= bottomB )
     {
         return false;
     }
 
-    if (rightA <= leftB)
+    if ( rightA <= leftB )
     {
         return false;
     }
 
-    if (leftA >= rightB)
+    if ( leftA >= rightB )
     {
         return false;
     }
 
     //If none of the sides from A are outside B
     return true;
+}
+
+void BG::loadRendererClip(SDL_Texture* body, SDL_Renderer* renderer, SDL_Rect* clip, int x, int y)
+{
+    SDL_Rect offset;
+    offset.x = x;
+    offset.y = y;
+    SDL_RenderCopy(renderer,body,NULL,&offset);
 }

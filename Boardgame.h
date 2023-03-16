@@ -18,7 +18,9 @@ static const int WIDTH_BULLET_ENEMY = 25;
 static const int HEIGHT_BULLET_ENEMY = 25;
 static const int SPEED_BULLET_PLANE = 25;
 static const int SPEED_BULLET_ENEMY = 2;
-static const int HP_DEFAULT = 2;
+static const int HP_DEFAULT = 5;
+static const double EXPLOSION_WIDTH = 85;
+static const double EXPLOSION_HEIGHT = 51;
 
 namespace BG
 {
@@ -31,6 +33,8 @@ namespace BG
     SDL_Texture* loadTexture(SDL_Renderer* renderer, string path);
 
     bool checkCollision(SDL_Rect a, SDL_Rect b);
+
+    void loadRendererClip(SDL_Texture* body, SDL_Renderer* renderer, SDL_Rect* clip, int x, int y);
 }
 
 #endif // BOARDGAME_H

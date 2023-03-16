@@ -44,13 +44,3 @@ void Object::setSize(int _w, int _h)
     rect.w = _w;
     rect.h = _h;
 }
-
-void Object::Free()
-{
-    rect.x = 0;
-    rect.y = 0;
-    rect.h = 0;
-    rect.w = 0;
-    SDL_DestroyTexture(body);
-    body = NULL;
-}

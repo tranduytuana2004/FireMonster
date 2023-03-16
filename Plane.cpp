@@ -8,16 +8,16 @@ Plane::Plane()
     y = 0;
 }
 
-Plane::Plane(SDL_Renderer* renderer, string path)
+Plane::Plane(SDL_Renderer* renderer)
 {
     x = SCREEN_WIDTH / 2;
     y = SCREEN_HEIGHT *3 / 4;
 
     setPos(x,y);
 
-    setImg(renderer, path);
+    setImg(renderer, "C:\\Users\\ASUS\\OneDrive\\Documents\\GitHub\\LTNC_main\\FireMonster\\Fire_Monster\\image\\Plane.png");
 
-    list_bullets.setImg(renderer, "D:\\Code\\banga\\FireMonster\\image\\Bullet.png");
+    list_bullets.setImg(renderer, "C:\\Users\\ASUS\\OneDrive\\Documents\\GitHub\\LTNC_main\\FireMonster\\Fire_Monster\\image\\Bullet.png");
 
     list_bullets.setPos(x,y);
     list_bullets.setSize(WIDTH_BULLET_PLANE,HEIGHT_BULLET_PLANE);
@@ -60,11 +60,6 @@ void Plane::clear_bullet()
 SDL_Rect Plane::getRectBullet()
 {
     return list_bullets.getRect();
-}
-
-void Plane::kill()
-{
-
 }
 
 Plane::~Plane()

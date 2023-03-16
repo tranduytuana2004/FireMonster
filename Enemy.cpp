@@ -13,9 +13,9 @@ Enemy::Enemy(SDL_Renderer* renderer, int i)
 
     setPos(x,y);
 
-    setImg(renderer, "D:\\Code\\banga\\FireMonster\\image\\enemy" + to_string(i) + ".png");
+    setImg(renderer, "C:\\Users\\ASUS\\OneDrive\\Documents\\GitHub\\LTNC_main\\FireMonster\\Fire_Monster\\image\\enemy" + to_string(i) + ".png");
 
-    list_bullets.setImg(renderer, "D:\\Code\\banga\\FireMonster\\image\\bulletenemy" + to_string(i) + ".png");
+    list_bullets.setImg(renderer, "C:\\Users\\ASUS\\OneDrive\\Documents\\GitHub\\LTNC_main\\FireMonster\\Fire_Monster\\image\\bulletenemy" + to_string(i) + ".png");
 
     list_bullets.setSize(WIDTH_BULLET_ENEMY,HEIGHT_BULLET_ENEMY);
 }

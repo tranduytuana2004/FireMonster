@@ -19,9 +19,8 @@ public:
 
     }
 
-    void update(SDL_Renderer* renderer);
-
     void kill();
+    void update(SDL_Renderer* renderer);
 
     SDL_Rect getRectBullet();
 

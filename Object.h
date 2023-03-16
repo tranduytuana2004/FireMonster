@@ -23,10 +23,9 @@ public:
 
     void setSize(int _w, int _h);
 
-    SDL_Rect getRect() const
+    SDL_Rect getRect()
     {
         return rect;
     }
-    void Free();
 };
 #endif // OBJECT_H

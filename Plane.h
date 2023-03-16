@@ -16,7 +16,7 @@ public :
 
     Plane();
 
-    Plane(SDL_Renderer* renderer, string path);
+    Plane(SDL_Renderer* renderer);
 
     void move(SDL_Event event);
 
@@ -25,8 +25,6 @@ public :
     SDL_Rect getRectBullet();
 
     void clear_bullet();
-
-    void kill();
 
     bool get_alive() const {return alive;}
 
