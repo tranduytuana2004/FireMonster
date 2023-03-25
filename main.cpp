@@ -26,21 +26,21 @@ int main(int argc, char* argv[])
     Explosion exp_plane(renderer,"C:\\Users\\ASUS\\OneDrive\\Documents\\GitHub\\LTNC_main\\FireMonster\\Fire_Monster\\image\\BlurPlane.png");
     exp_plane.set_clip();
     int ex;
-
+    int x = rand() % ( 160 - 0 + 1);
     vector<Enemy> list_enemy;
 	for(int i = 1; i < NUMBER_OF_ENEMY; i++)
     {
-        int type = rand() % (3-1+1)+1;
+        int type = rand() % (TYPE_ENEMY - 1 + 1) + 1;
 		Enemy enemy(renderer, type);
 
-		int x = rand() % (SCREEN_WIDTH - enemy.getRect().w );
+		 x += rand() % (200 - 50 + 1);
 
-		if( x < enemy.getRect().w )
-        {
-            x = enemy.getRect().w;
-        }
+		 if( x > SCREEN_WIDTH )
+         {
+             x = rand() % ( 160 - 0 + 1);
+         }
 
-		int y = 0;
+		int y = -(rand() % ( SCREEN_HEIGHT/4 - 0 + 1));
 
 		enemy.setPos(x, y);
 		list_enemy.push_back(enemy);

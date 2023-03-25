@@ -44,6 +44,8 @@
 		<Unit filename="Object.h" />
 		<Unit filename="Plane.cpp" />
 		<Unit filename="Plane.h" />
+		<Unit filename="TextObject.cpp" />
+		<Unit filename="TextObject.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
