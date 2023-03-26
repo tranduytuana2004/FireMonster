@@ -36,7 +36,10 @@ void BG::initSDL(SDL_Window* window, SDL_Renderer*& renderer)
         logSDLError("CreateRenderer",true);
     }
 
-    TTF_Init();
+    if( TTF_Init() == -10 )
+    {
+        logSDLError("TTF",true);
+    }
 
     SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "linear");
     SDL_RenderSetLogicalSize(renderer, SCREEN_WIDTH, SCREEN_HEIGHT);

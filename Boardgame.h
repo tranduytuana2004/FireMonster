@@ -9,9 +9,10 @@
 
 using namespace std;
 
+static TTF_Font* fontText = NULL;
 static const int SCREEN_WIDTH  = 640;
 static const int SCREEN_HEIGHT = 800;
-static const int NUMBER_OF_ENEMY = 6;
+static const int NUMBER_OF_ENEMY = 10;
 static const int WIDTH_ENEMY = 85;
 static const int HEIGHT_ENEMY = 85;
 static const int WIDTH_BULLET_PLANE = 20;

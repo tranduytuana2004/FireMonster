@@ -21,11 +21,15 @@ public:
     };
     TextObject();
     ~TextObject();
+
+    void initText(TTF_Font*& fontText);
+
     void SetText(const string& text)
     {
         str = text;
     }
     void SetColor(const int& type);
+
     void CreateGameText(TTF_Font* font, SDL_Renderer* renderer);
 };
 #endif // TEXTOBJECT_H

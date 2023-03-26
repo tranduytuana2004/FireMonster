@@ -4,6 +4,7 @@
 #include "Bullet.h"
 #include "Enemy.h"
 #include "Explosion.h"
+#include "TextObject.h"
 
 using namespace BG;
 
@@ -26,9 +27,20 @@ int main(int argc, char* argv[])
     Explosion exp_plane(renderer,"C:\\Users\\ASUS\\OneDrive\\Documents\\GitHub\\LTNC_main\\FireMonster\\Fire_Monster\\image\\BlurPlane.png");
     exp_plane.set_clip();
     int ex;
+
+    TextObject time;
+    time.SetColor(TextObject::RED_TEXT);
+    time.setPos(5,5);
+    time.initText(fontText);
+
+
+    TextObject mark;
+    mark.SetColor(TextObject::RED_TEXT);
+    int score = 0;
+
     int x = rand() % ( 160 - 0 + 1);
     vector<Enemy> list_enemy;
-	for(int i = 1; i < NUMBER_OF_ENEMY; i++)
+	for(int i = 1; i <= NUMBER_OF_ENEMY; i++)
     {
         int type = rand() % (TYPE_ENEMY - 1 + 1) + 1;
 		Enemy enemy(renderer, type);
@@ -74,14 +86,14 @@ int main(int argc, char* argv[])
         SDL_RenderCopy(renderer, Background, NULL, &up_backgr1);
         plane.update(renderer);
 
-        for (int i = 0; i < NUMBER_OF_ENEMY - 1; i++)
+        for (int i = 0; i <= NUMBER_OF_ENEMY - 1; i++)
         {
 			if(!list_enemy.at(i).isKilled())
 			{
 				if( checkCollision( list_enemy.at(i).getRect(), plane.getRectBullet() ) )
                 {
 					list_enemy.at(i).kill();
-						//score += 100;
+						score += 10;
 						plane.clear_bullet();
 						break;
 				}
@@ -115,6 +127,12 @@ int main(int argc, char* argv[])
         {
             plane.isShot = false;
         }
+
+        mark.SetText( "SCORE: " + to_string(score) );
+        mark.CreateGameText(fontText,renderer);
+
+        time.SetText( "TIME: " + to_string(SDL_GetTicks()/1000) );
+        time.CreateGameText(fontText,renderer);
 
         SDL_RenderPresent(renderer);
     }
