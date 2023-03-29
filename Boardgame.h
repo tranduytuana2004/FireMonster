@@ -8,8 +8,7 @@
 #include <SDL_ttf.h>
 
 using namespace std;
-
-static TTF_Font* fontText = NULL;
+static  TTF_Font* fontText = NULL;
 static const int SCREEN_WIDTH  = 640;
 static const int SCREEN_HEIGHT = 800;
 static const int NUMBER_OF_ENEMY = 10;
@@ -26,6 +25,7 @@ static const double EXPLOSION_WIDTH = 85;
 static const double EXPLOSION_HEIGHT = 51;
 static const int NUM_OF_FRAME = 8;
 static const int TYPE_ENEMY = 3;
+static const int kMenuItemNum = 2;
 
 namespace BG
 {
@@ -40,6 +40,8 @@ namespace BG
     bool checkCollision(SDL_Rect a, SDL_Rect b);
 
     void loadRendererClip(SDL_Texture* body, SDL_Renderer* renderer, SDL_Rect* clip, int x, int y);
+
+    bool CheckFocusWithRect( int& x, int& y, SDL_Rect rect);
 }
 
 #endif // BOARDGAME_H

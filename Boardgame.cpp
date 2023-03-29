@@ -1,9 +1,4 @@
 #include "Boardgame.h"
-#include <bits/stdc++.h>
-#include <SDL.h>
-#include <SDL_image.h>
-#include <SDL_mixer.h>
-#include <SDL_ttf.h>
 
 using namespace std;
 
@@ -116,4 +111,14 @@ void BG::loadRendererClip(SDL_Texture* body, SDL_Renderer* renderer, SDL_Rect* c
     offset.x = x;
     offset.y = y;
     SDL_RenderCopy(renderer,body,clip,&offset);
+}
+
+bool BG::CheckFocusWithRect( int& x, int& y, SDL_Rect rect)
+{
+    if( x >= rect.x && x <= rect.x + 80 &&
+        y >= rect.y && y <= rect.y + 50 )
+    {
+        return true;
+    }
+    return false;
 }

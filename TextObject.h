@@ -30,6 +30,6 @@ public:
     }
     void SetColor(const int& type);
 
-    void CreateGameText(TTF_Font* font, SDL_Renderer* renderer);
+    void CreateGameText(TTF_Font* font, SDL_Renderer* renderer,int x, int y);
 };
 #endif // TEXTOBJECT_H

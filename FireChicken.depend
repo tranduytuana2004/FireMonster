@@ -95,15 +95,10 @@
 	"Object.h"
 	"Bullet.h"
 
-1679817802 source:c:\users\asus\onedrive\documents\github\ltnc_main\firemonster\fire_monster\boardgame.cpp
+1680100233 source:c:\users\asus\onedrive\documents\github\ltnc_main\firemonster\fire_monster\boardgame.cpp
 	"Boardgame.h"
-	<bits/stdc++.h>
-	<SDL.h>
-	<SDL_image.h>
-	<SDL_mixer.h>
-	<SDL_ttf.h>
 
-1679819100 c:\users\asus\onedrive\documents\github\ltnc_main\firemonster\fire_monster\boardgame.h
+1680101704 c:\users\asus\onedrive\documents\github\ltnc_main\firemonster\fire_monster\boardgame.h
 	<bits/stdc++.h>
 	<SDL.h>
 	<SDL_image.h>
@@ -117,7 +112,7 @@
 1678302556 c:\users\asus\onedrive\documents\github\ltnc_main\firemonster\fire_monster\bullet.h
 	"Object.h"
 
-1678928959 c:\users\asus\onedrive\documents\github\ltnc_main\firemonster\fire_monster\object.h
+1679843202 c:\users\asus\onedrive\documents\github\ltnc_main\firemonster\fire_monster\object.h
 	"Boardgame.h"
 
 1678898907 source:c:\users\asus\onedrive\documents\github\ltnc_main\firemonster\fire_monster\enemy.cpp
@@ -127,7 +122,7 @@
 	"Object.h"
 	"Bullet.h"
 
-1679820633 source:c:\users\asus\onedrive\documents\github\ltnc_main\firemonster\fire_monster\main.cpp
+1680102376 source:c:\users\asus\onedrive\documents\github\ltnc_main\firemonster\fire_monster\main.cpp
 	"Boardgame.h"
 	"Object.h"
 	"Plane.h"
@@ -155,11 +150,11 @@
 1678975953 source:c:\users\asus\onedrive\documents\github\ltnc_main\firemonster\fire_monster\explosion.cpp
 	"Explosion.h"
 
-1679819077 source:c:\users\asus\onedrive\documents\github\ltnc_main\firemonster\fire_monster\textobject.cpp
+1680005044 source:c:\users\asus\onedrive\documents\github\ltnc_main\firemonster\fire_monster\textobject.cpp
 	"TextObject.h"
 	<SDL_ttf.h>
 
-1679817810 c:\users\asus\onedrive\documents\github\ltnc_main\firemonster\fire_monster\textobject.h
+1680005044 c:\users\asus\onedrive\documents\github\ltnc_main\firemonster\fire_monster\textobject.h
 	"Object.h"
 	<SDL_ttf.h>
 

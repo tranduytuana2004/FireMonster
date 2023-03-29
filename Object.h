@@ -11,7 +11,7 @@ protected:
 public:
     Object();
 
-    Object(SDL_Renderer* renderer, string path);
+    Object(SDL_Renderer* renderer, std::string path);
 
     ~Object();
 
