@@ -6,7 +6,6 @@ Plane::Plane()
 {
     x = 0;
     y = 0;
-    //isShot = false;
 }
 
 Plane::Plane(SDL_Renderer* renderer)
@@ -20,10 +19,11 @@ Plane::Plane(SDL_Renderer* renderer)
 
     setImg(renderer, "C:\\Users\\ASUS\\OneDrive\\Documents\\GitHub\\LTNC_main\\FireMonster\\Fire_Monster\\image\\Plane.png");
 
-    list_bullets.setImg(renderer, "C:\\Users\\ASUS\\OneDrive\\Documents\\GitHub\\LTNC_main\\FireMonster\\Fire_Monster\\image\\Bullet.png");
+    bullet.setImg(renderer, "C:\\Users\\ASUS\\OneDrive\\Documents\\GitHub\\LTNC_main\\FireMonster\\Fire_Monster\\image\\Bullet.png");
 
-    list_bullets.setPos(x,y);
-    list_bullets.setSize(WIDTH_BULLET_PLANE,HEIGHT_BULLET_PLANE);
+    bullet.setPos(x,y);
+
+    bullet.setSize(WIDTH_BULLET_PLANE,HEIGHT_BULLET_PLANE);
 }
 
 void Plane::move(SDL_Event event)
@@ -35,11 +35,9 @@ void Plane::move(SDL_Event event)
     }
     if( event.type == SDL_MOUSEBUTTONDOWN )
     {
-        if( !list_bullets.is_Move() )
-        {
-            list_bullets.setPos(rect.x + rect.w/2 - list_bullets.getRect().w/2, rect.y +15);
-            list_bullets.setStatus(true);
-        }
+            bullet.setPos(rect.x + rect.w/2 - bullet.getRect().w/2, rect.y +15);
+            bullet.setStatus(true);
+            list_bullets.push_back(bullet);
     }
 }
 
@@ -49,23 +47,23 @@ void Plane::update(SDL_Renderer* renderer)
     {
         show(renderer);
     }
-
-    if( list_bullets.is_Move())
+    for(int i = 0; i < list_bullets.size(); i++)
     {
-        list_bullets.plane_fire();
-        list_bullets.show(renderer);
+        if( list_bullets[i].is_Move())
+        {
+            list_bullets[i].plane_fire();
+            list_bullets[i].show(renderer);
+        }
+        else
+        {
+            list_bullets.erase(list_bullets.begin(), list_bullets.begin() + i);
+        }
     }
-}
-
-void Plane::clear_bullet()
-{
-    list_bullets.setPos(0,0);
-    list_bullets.setStatus(false);
 }
 
 SDL_Rect Plane::getRectBullet()
 {
-    return list_bullets.getRect();
+    return bullet.getRect();
 }
 
 Plane::~Plane()

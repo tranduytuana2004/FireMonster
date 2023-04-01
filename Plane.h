@@ -9,7 +9,8 @@ class Plane : public Object
 private :
     int x;
     int y;
-    Bullet list_bullets;
+    vector<Bullet> list_bullets;
+    Bullet bullet;
 public :
     bool isShot;
 
@@ -25,7 +26,10 @@ public :
 
     SDL_Rect getRectBullet();
 
-    void clear_bullet();
+    vector<Bullet> getListBullets()
+    {
+        return list_bullets;
+    }
 
     ~Plane();
 };

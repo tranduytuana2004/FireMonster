@@ -11,21 +11,21 @@ using namespace std;
 static  TTF_Font* fontText = NULL;
 static const int SCREEN_WIDTH  = 640;
 static const int SCREEN_HEIGHT = 800;
-static const int NUMBER_OF_ENEMY = 10;
+static const int NUMBER_OF_ENEMY = 30;
 static const int WIDTH_ENEMY = 85;
 static const int HEIGHT_ENEMY = 85;
 static const int WIDTH_BULLET_PLANE = 20;
 static const int HEIGHT_BULLET_PLANE = 55;
 static const int WIDTH_BULLET_ENEMY = 25;
 static const int HEIGHT_BULLET_ENEMY = 25;
-static const int SPEED_BULLET_PLANE = 25;
+static const int SPEED_BULLET_PLANE = 10;
 static const int SPEED_BULLET_ENEMY = 2;
 static const int HP_DEFAULT = 5;
 static const double EXPLOSION_WIDTH = 85;
 static const double EXPLOSION_HEIGHT = 51;
 static const int NUM_OF_FRAME = 8;
 static const int TYPE_ENEMY = 3;
-static const int kMenuItemNum = 2;
+static const int kMenuItemNum = 3;
 
 namespace BG
 {

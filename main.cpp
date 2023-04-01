@@ -75,7 +75,7 @@ int main(int argc, char* argv[])
     {
         while(SDL_PollEvent(&event) != 0)
         {
-            if( event.type == SDL_QUIT )
+            if( event.type == SDL_QUIT || event.key.keysym.sym == SDLK_ESCAPE )
             {
                 quit = true;
             }
@@ -83,6 +83,8 @@ int main(int argc, char* argv[])
         }
 
         SDL_RenderClear(renderer);
+
+        SDL_ShowCursor(false);
 
         backgr_main_y_ = backgr_main_y + SCREEN_HEIGHT;
         SDL_Rect up_backgrmain2 = {0, backgr_main_y_, SCREEN_WIDTH, SCREEN_HEIGHT};
@@ -114,19 +116,26 @@ int main(int argc, char* argv[])
         SDL_Rect up_backgr1 = {0,backgr_1_y,SCREEN_WIDTH,SCREEN_HEIGHT};
         SDL_RenderCopy(renderer,Background_1,nullptr, &up_backgr1);
 
+        if( backgr_3_y <= -(SCREEN_HEIGHT) )
+        {
+            backgr_1_y = 0;
+        }
+
         plane.update(renderer);
 
         for (int i = 0; i <= NUMBER_OF_ENEMY - 1; i++)
         {
 			if(!list_enemy.at(i).isKilled())
 			{
-				if( checkCollision( list_enemy.at(i).getRect(), plane.getRectBullet() ) )
-                {
-					list_enemy.at(i).kill();
-						score += 10;
-						plane.clear_bullet();
-						break;
-				}
+			    for (long long unsigned int j = 0; j < plane.getListBullets().size(); j++) {
+                    if( checkCollision( list_enemy.at(i).getRect(), plane.getListBullets()[j].getRect()) )
+                    {
+                        list_enemy.at(i).kill();
+                        score += 10;
+                        plane.getListBullets()[j].setStatus(false);
+                        break;
+                    }
+			    }
 
 				if( checkCollision( list_enemy.at(i).getRectBullet(), plane.getRect() ) )
                 {
@@ -144,8 +153,8 @@ int main(int argc, char* argv[])
                         quit = true;
                     }
                 }
-                list_enemy.at(i).update(renderer);
 			}
+                list_enemy.at(i).update(renderer);
 		}
 		if ( ex < NUM_OF_FRAME )
         {
@@ -176,9 +185,12 @@ void initMenu(SDL_Renderer* renderer,bool& quit)
 {
     TTF_Font* fontMenu = NULL;
     SDL_Texture* Menu = NULL;
+    SDL_Texture* Help = NULL;
     bool IsRunningMenu = false;
+    bool help = false;
     fontMenu = TTF_OpenFont("C:\\Users\\ASUS\\OneDrive\\Documents\\GitHub\\LTNC_main\\FireMonster\\Fire_Monster\\font\\VCR_OSD_MONO_1.001.ttf",100);
     Menu = loadTexture(renderer,"C:\\Users\\ASUS\\OneDrive\\Documents\\GitHub\\LTNC_main\\FireMonster\\Fire_Monster\\image\\FIRE_MONSTER.png");
+    Help = loadTexture(renderer,"C:\\Users\\ASUS\\OneDrive\\Documents\\GitHub\\LTNC_main\\FireMonster\\Fire_Monster\\image\\help.png");
 
     SDL_Rect pos_arr[kMenuItemNum];
     pos_arr[0].x = 200;
@@ -187,6 +199,9 @@ void initMenu(SDL_Renderer* renderer,bool& quit)
     pos_arr[1].x = 200;
     pos_arr[1].y = 400;
 
+    pos_arr[2].x = 200;
+    pos_arr[2].y = 500;
+
     TextObject text_menu[kMenuItemNum];
 
     text_menu[0].SetText("PLAY");
@@ -194,6 +209,9 @@ void initMenu(SDL_Renderer* renderer,bool& quit)
 
     text_menu[1].SetText("EXIT");
     text_menu[1].setPos(pos_arr[1].x, pos_arr[1].y);
+
+    text_menu[2].SetText("HELP");
+    text_menu[2].setPos(pos_arr[2].x, pos_arr[2].y);
 
     bool selected[kMenuItemNum] = {0,0};
     int xm = 0;
@@ -256,6 +274,10 @@ void initMenu(SDL_Renderer* renderer,bool& quit)
                             {
                                 IsRunningMenu = true;
                             }
+                            else if(i == 2)
+                            {
+                                help = true;
+                            }
                             quit = true;
                             break;
                         }
@@ -273,6 +295,33 @@ void initMenu(SDL_Renderer* renderer,bool& quit)
         }
         SDL_RenderPresent(renderer);
     }
+    if(help == true)
+        {
+            bool quit2 = false;
+
+            SDL_Event help_event;
+
+            while(!quit2)
+            {
+                SDL_RenderClear(renderer);
+                SDL_RenderCopy(renderer,Help,NULL,NULL);
+
+                while(SDL_PollEvent(&help_event)!= 0)
+                {
+                    if(help_event.type == SDL_QUIT)
+                    {
+                        quit2 = true;
+                    }
+                    else if(help_event.type == SDL_MOUSEBUTTONDOWN)
+                        {
+                            IsRunningMenu = true;
+                            quit2 = true;
+                            break;
+                        }
+                }
+                 SDL_RenderPresent(renderer);
+            }
+        }
 
     if (IsRunningMenu)
     {
