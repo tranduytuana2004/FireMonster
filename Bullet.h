@@ -15,6 +15,12 @@ public:
 
     Bullet();
 
+    void setrect(int a, int b)
+    {
+        rect.x = a;
+        rect.y = b;
+    }
+
     void plane_fire();
 
     void enemy_fire();

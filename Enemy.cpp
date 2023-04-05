@@ -61,9 +61,15 @@ void Enemy::update(SDL_Renderer* renderer)
 
             rect.y = 0; // Enemy chạy lại từ trên xuống
         }
-
-        show(renderer);
     }
+    else
+    {
+        rect.x = rand() % (SCREEN_WIDTH - 50 - 100 + 1);
+        rect.y = 0;
+        alive = true;
+    }
+
+     show(renderer);
 }
 
 void Enemy::clear_bullet()

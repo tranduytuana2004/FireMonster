@@ -35,6 +35,8 @@ int main(int argc, char* argv[])
     SDL_Texture* Background_2 = loadTexture(renderer,"C:\\Users\\ASUS\\OneDrive\\Documents\\GitHub\\LTNC_main\\FireMonster\\Fire_Monster\\image\\bg2.png");
     SDL_Texture* Background_3 = loadTexture(renderer,"C:\\Users\\ASUS\\OneDrive\\Documents\\GitHub\\LTNC_main\\FireMonster\\Fire_Monster\\image\\bg3.png");
     SDL_Texture* Background_4 = loadTexture(renderer,"C:\\Users\\ASUS\\OneDrive\\Documents\\GitHub\\LTNC_main\\FireMonster\\Fire_Monster\\image\\bg4.png");
+    SDL_Texture* Line = loadTexture(renderer,"C:\\Users\\ASUS\\OneDrive\\Documents\\GitHub\\LTNC_main\\FireMonster\\Fire_Monster\\image\\line.png");
+    SDL_Rect rect_line = {0,700,640,40};
 
     Plane plane(renderer);
 
@@ -86,6 +88,8 @@ int main(int argc, char* argv[])
 
         SDL_ShowCursor(false);
 
+        SDL_RenderCopy(renderer,Line,NULL,&rect_line);
+
         backgr_main_y_ = backgr_main_y + SCREEN_HEIGHT;
         SDL_Rect up_backgrmain2 = {0, backgr_main_y_, SCREEN_WIDTH, SCREEN_HEIGHT};
 
@@ -128,6 +132,7 @@ int main(int argc, char* argv[])
 			if(!list_enemy.at(i).isKilled())
 			{
 			    for (long long unsigned int j = 0; j < plane.getListBullets().size(); j++) {
+                  //  SDL_RenderCopy(renderer,Line,NULL,&rect_line);
                     if( checkCollision( list_enemy.at(i).getRect(), plane.getListBullets()[j].getRect()) )
                     {
                         list_enemy.at(i).kill();
@@ -153,6 +158,13 @@ int main(int argc, char* argv[])
                         quit = true;
                     }
                 }
+                for (long long unsigned int j = 0; j < plane.getListBullets().size(); j++) {
+                  //  SDL_RenderCopy(renderer,Line,NULL,&rect_line);
+                    if( checkCollision(list_enemy.at(i).getRectBullet(), plane.getListBullets()[j].getRect()) )
+                    {
+                        list_enemy.at(i).clear_bullet();
+                    }
+			    }
 			}
                 list_enemy.at(i).update(renderer);
 		}
@@ -172,7 +184,7 @@ int main(int argc, char* argv[])
 
         mark.SetText( "SCORE: " + to_string(score) );
         mark.CreateGameText(fontText,renderer,100,50);
-
+        SDL_RenderCopy(renderer,Line,NULL,&rect_line);
         SDL_RenderPresent(renderer);
     }
 

@@ -32,6 +32,10 @@ void Plane::move(SDL_Event event)
     {
         rect.x = event.motion.x - rect.w / 2;
         rect.y = event.motion.y - rect.h / 2;
+        if (rect.y < 2*SCREEN_HEIGHT/3)
+        {
+            rect.y = 2*SCREEN_HEIGHT/3-1;
+        }
     }
     if( event.type == SDL_MOUSEBUTTONDOWN )
     {
