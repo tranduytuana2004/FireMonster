@@ -4,9 +4,6 @@ Enemy::Enemy(SDL_Renderer* renderer, int i)
 {
     alive = true;
 
-    x = 0;
-    y = 0;
-
     rect.w = WIDTH_ENEMY;
 
     rect.h = HEIGHT_ENEMY;

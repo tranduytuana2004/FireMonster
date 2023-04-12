@@ -16,7 +16,7 @@ public:
 
     ~Enemy()
     {
-
+        ;
     }
 
     void kill();

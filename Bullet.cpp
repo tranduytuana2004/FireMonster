@@ -35,3 +35,13 @@ Bullet::~Bullet()
 {
 
 }
+
+void Bullet::icon_move()
+{
+    if( rect.y > SCREEN_HEIGHT*3 )
+    {
+        rect.x = rand() % (SCREEN_WIDTH - 20 - 10) + 1;
+        rect.y = 0;
+    }
+    rect.y++;
+}

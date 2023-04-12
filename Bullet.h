@@ -25,6 +25,8 @@ public:
 
     void enemy_fire();
 
+    void icon_move();
+
     void setStatus(bool _isMove);
 
     bool is_Move()

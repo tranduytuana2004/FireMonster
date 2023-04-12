@@ -17,6 +17,7 @@ int main(int argc, char* argv[])
     SDL_Renderer* renderer;
     SDL_Event event;
     bool quit = false;
+
     initSDL(window, renderer);
 
     /// MENU
@@ -38,22 +39,26 @@ int main(int argc, char* argv[])
     SDL_Texture* Line = loadTexture(renderer,"C:\\Users\\ASUS\\OneDrive\\Documents\\GitHub\\LTNC_main\\FireMonster\\Fire_Monster\\image\\line.png");
     SDL_Rect rect_line = {0,700,640,40};
 
+    /// Plane
     Plane plane(renderer);
-
     Explosion exp_plane(renderer,"C:\\Users\\ASUS\\OneDrive\\Documents\\GitHub\\LTNC_main\\FireMonster\\Fire_Monster\\image\\BlurPlane.png");
     exp_plane.set_clip();
     int ex;
 
+    /// Mark
     TextObject mark;
     mark.initText(fontText);
     mark.SetColor(TextObject::RED_TEXT);
     int score = 0;
 
+    /// HP
     TextObject Hp;
     Hp.setPos(5,5);
     Hp.SetColor(TextObject::RED_TEXT);
 
+    /// Enemy
     int x = rand() % ( 160 - 0 + 1);
+
     vector<Enemy> list_enemy;
 	for(int i = 1; i <= NUMBER_OF_ENEMY; i++)
     {
@@ -73,6 +78,17 @@ int main(int argc, char* argv[])
 		list_enemy.push_back(enemy);
 	}
 
+
+	/// Hearticon
+	Bullet heart;
+	heart.setImg(renderer,"C:\\Users\\ASUS\\OneDrive\\Documents\\GitHub\\LTNC_main\\FireMonster\\Fire_Monster\\image\\heart_icon.png");
+	heart.setSize(32,32);
+	heart.setStatus(false);
+	int heart_x = 200;
+	int heart_y = 0;
+	heart.setPos(heart_x,heart_y);
+
+    /// Game loop!
     while(!quit)
     {
         while(SDL_PollEvent(&event) != 0)
@@ -131,8 +147,8 @@ int main(int argc, char* argv[])
         {
 			if(!list_enemy.at(i).isKilled())
 			{
-			    for (long long unsigned int j = 0; j < plane.getListBullets().size(); j++) {
-                  //  SDL_RenderCopy(renderer,Line,NULL,&rect_line);
+			    for (long long unsigned int j = 0; j < plane.getListBullets().size(); j++)
+                {
                     if( checkCollision( list_enemy.at(i).getRect(), plane.getListBullets()[j].getRect()) )
                     {
                         list_enemy.at(i).kill();
@@ -158,16 +174,29 @@ int main(int argc, char* argv[])
                         quit = true;
                     }
                 }
-                for (long long unsigned int j = 0; j < plane.getListBullets().size(); j++) {
-                  //  SDL_RenderCopy(renderer,Line,NULL,&rect_line);
+                for (long long unsigned int j = 0; j < plane.getListBullets().size(); j++)
+                {
                     if( checkCollision(list_enemy.at(i).getRectBullet(), plane.getListBullets()[j].getRect()) )
                     {
                         list_enemy.at(i).clear_bullet();
                     }
 			    }
+			    if( list_enemy.at(i).getRect().y == 700 )
+                {
+                    score -= 5;
+                }
 			}
-                list_enemy.at(i).update(renderer);
+            list_enemy.at(i).update(renderer);
 		}
+
+        heart.setStatus(true);
+        if( heart.is_Move())
+        {
+            heart.icon_move();
+
+            heart.show(renderer);
+        }
+
 		if ( ex < NUM_OF_FRAME )
         {
             exp_plane.set_frame(ex);
@@ -177,6 +206,14 @@ int main(int argc, char* argv[])
         else
         {
             plane.isShot = false;
+        }
+
+        if( checkCollision(heart.getRect(),plane.getRect()) )
+        {
+            plane.hp++;
+            heart_x = rand() % (SCREEN_WIDTH - 20 -10) + 1;
+            heart_y = -(SCREEN_HEIGHT*4);
+            heart.setPos(heart_x,heart_y);
         }
 
         Hp.SetText("HP: " + to_string(plane.hp) );

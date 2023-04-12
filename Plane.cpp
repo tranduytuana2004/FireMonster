@@ -51,7 +51,7 @@ void Plane::update(SDL_Renderer* renderer)
     {
         show(renderer);
     }
-    for(int i = 0; i < list_bullets.size(); i++)
+    for(long long unsigned int i = 0; i < list_bullets.size(); i++)
     {
         if( list_bullets[i].is_Move())
         {
