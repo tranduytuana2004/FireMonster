@@ -24,6 +24,8 @@ Plane::Plane(SDL_Renderer* renderer)
     bullet.setPos(x,y);
 
     bullet.setSize(WIDTH_BULLET_PLANE,HEIGHT_BULLET_PLANE);
+
+    sound_bullet = Mix_LoadWAV("C:\\Users\\ASUS\\OneDrive\\Documents\\GitHub\\LTNC_main\\FireMonster\\Fire_Monster\\music\\laser1.wav");
 }
 
 void Plane::move(SDL_Event event)
@@ -41,11 +43,15 @@ void Plane::move(SDL_Event event)
     {
             bullet.setPos(rect.x + rect.w/2 - bullet.getRect().w/2, rect.y +15);
             bullet.setStatus(true);
+
+
+
+            Mix_PlayChannel(-1, sound_bullet,0);
             list_bullets.push_back(bullet);
     }
 }
 
-void Plane::update(SDL_Renderer* renderer)
+void Plane::update(SDL_Renderer* renderer, Mix_Chunk* sound_bullet)
 {
     if( !isShot )
     {

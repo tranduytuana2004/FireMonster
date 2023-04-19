@@ -22,7 +22,7 @@ public :
 
     void move(SDL_Event event);
 
-    void update(SDL_Renderer* renderer);
+    void update(SDL_Renderer* renderer, Mix_Chunk* sound_bullet);
 
     SDL_Rect getRectBullet();
 

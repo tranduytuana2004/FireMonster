@@ -26,6 +26,7 @@ static const double EXPLOSION_HEIGHT = 51;
 static const int NUM_OF_FRAME = 8;
 static const int TYPE_ENEMY = 3;
 static const int kMenuItemNum = 3;
+static Mix_Chunk* sound_bullet;
 
 namespace BG
 {

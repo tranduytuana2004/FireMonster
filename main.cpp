@@ -141,7 +141,7 @@ int main(int argc, char* argv[])
             backgr_1_y = 0;
         }
 
-        plane.update(renderer);
+        plane.update(renderer,sound_bullet);
 
         for (int i = 0; i <= NUMBER_OF_ENEMY - 1; i++)
         {
@@ -190,7 +190,7 @@ int main(int argc, char* argv[])
 		}
 
         heart.setStatus(true);
-        if( heart.is_Move())
+        if( heart.is_Move() && plane.hp < 5)
         {
             heart.icon_move();
 
@@ -212,7 +212,7 @@ int main(int argc, char* argv[])
         {
             plane.hp++;
             heart_x = rand() % (SCREEN_WIDTH - 20 -10) + 1;
-            heart_y = -(SCREEN_HEIGHT*4);
+            heart_y = -(SCREEN_HEIGHT*2);
             heart.setPos(heart_x,heart_y);
         }
 
@@ -221,7 +221,14 @@ int main(int argc, char* argv[])
 
         mark.SetText( "SCORE: " + to_string(score) );
         mark.CreateGameText(fontText,renderer,100,50);
+        if(score < 0)
+        {
+            quit = true;
+            cout << "YOU LOST";
+        }
+
         SDL_RenderCopy(renderer,Line,NULL,&rect_line);
+
         SDL_RenderPresent(renderer);
     }
 
@@ -255,12 +262,15 @@ void initMenu(SDL_Renderer* renderer,bool& quit)
 
     text_menu[0].SetText("PLAY");
     text_menu[0].setPos(pos_arr[0].x, pos_arr[0].y);
+    text_menu[0].SetColor(TextObject::WHITE_TEXT);
 
     text_menu[1].SetText("EXIT");
     text_menu[1].setPos(pos_arr[1].x, pos_arr[1].y);
+    text_menu[1].SetColor(TextObject::WHITE_TEXT);
 
     text_menu[2].SetText("HELP");
     text_menu[2].setPos(pos_arr[2].x, pos_arr[2].y);
+    text_menu[2].SetColor(TextObject::WHITE_TEXT);
 
     bool selected[kMenuItemNum] = {0,0};
     int xm = 0;

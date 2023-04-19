@@ -36,6 +36,11 @@ void BG::initSDL(SDL_Window* window, SDL_Renderer*& renderer)
         logSDLError("TTF",true);
     }
 
+    if(Mix_OpenAudio(44100,MIX_DEFAULT_FORMAT,2,2048) < 0 )
+    {
+        logSDLError("MIXER",true);
+    }
+
     SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "linear");
     SDL_RenderSetLogicalSize(renderer, SCREEN_WIDTH, SCREEN_HEIGHT);
 }
