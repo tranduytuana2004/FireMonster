@@ -186,7 +186,10 @@ int main(int argc, char* argv[])
                     score -= 5;
                 }
 			}
-            list_enemy.at(i).update(renderer);
+
+			double direc = (double)(plane.getRect().y - list_enemy.at(i).getRect().y) / (plane.getRect().x - list_enemy.at(i).getRect().x);
+
+            list_enemy.at(i).update(renderer,score,direc);
 		}
 
         heart.setStatus(true);
@@ -212,7 +215,7 @@ int main(int argc, char* argv[])
         {
             plane.hp++;
             heart_x = rand() % (SCREEN_WIDTH - 20 -10) + 1;
-            heart_y = -(SCREEN_HEIGHT*2);
+            heart_y = -(SCREEN_HEIGHT);
             heart.setPos(heart_x,heart_y);
         }
 

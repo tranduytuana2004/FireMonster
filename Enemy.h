@@ -20,7 +20,7 @@ public:
     }
 
     void kill();
-    void update(SDL_Renderer* renderer);
+    void update(SDL_Renderer* renderer,int score,double direc);
 
     SDL_Rect getRectBullet();
 

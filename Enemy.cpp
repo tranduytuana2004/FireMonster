@@ -26,7 +26,7 @@ SDL_Rect Enemy::getRectBullet()
 {
     return list_bullets.getRect();
 }
-void Enemy::update(SDL_Renderer* renderer)
+void Enemy::update(SDL_Renderer* renderer,int score, double direc)
 {
     if( !list_bullets.is_Move())
         {
@@ -41,7 +41,7 @@ void Enemy::update(SDL_Renderer* renderer)
 
         if( list_bullets.is_Move())
         {
-            list_bullets.enemy_fire();
+            list_bullets.enemy_fire(score,direc);
 
             list_bullets.show(renderer);
         }

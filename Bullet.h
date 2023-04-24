@@ -23,7 +23,7 @@ public:
 
     void plane_fire();
 
-    void enemy_fire();
+    void enemy_fire(int score,double direc);
 
     void icon_move();
 

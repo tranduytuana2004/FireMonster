@@ -17,13 +17,17 @@ void Bullet::plane_fire()
     rect.y -= SPEED_BULLET_PLANE;
 }
 
-void Bullet::enemy_fire()
+void Bullet::enemy_fire(int score, double direc)
 {
     if( rect.y > SCREEN_HEIGHT )
     {
         isMove = false;
     }
-    rect.y += SPEED_BULLET_ENEMY;
+    if(score >= 10 && (1/direc) > -sqrt(3) && (1/direc) < sqrt(3) )
+    {
+            rect.x += (1/direc) * SPEED_BULLET_ENEMY;
+    }
+        rect.y += SPEED_BULLET_ENEMY;
 }
 
 void Bullet::setStatus(bool _isMove)
