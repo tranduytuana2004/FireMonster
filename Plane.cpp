@@ -34,6 +34,8 @@ void Plane::move(SDL_Event event)
     {
         rect.x = event.motion.x - rect.w / 2;
         rect.y = event.motion.y - rect.h / 2;
+
+        /// plane limit
         if (rect.y < 2*SCREEN_HEIGHT/3)
         {
             rect.y = 2*SCREEN_HEIGHT/3-1;
@@ -43,8 +45,6 @@ void Plane::move(SDL_Event event)
     {
             bullet.setPos(rect.x + rect.w/2 - bullet.getRect().w/2, rect.y +15);
             bullet.setStatus(true);
-
-
 
             Mix_PlayChannel(-1, sound_bullet,0);
             list_bullets.push_back(bullet);

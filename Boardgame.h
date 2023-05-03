@@ -19,13 +19,14 @@ static const int HEIGHT_BULLET_PLANE = 55;
 static const int WIDTH_BULLET_ENEMY = 25;
 static const int HEIGHT_BULLET_ENEMY = 25;
 static const int SPEED_BULLET_PLANE = 10;
-static const int SPEED_BULLET_ENEMY = 2;
+static int SPEED_BULLET_ENEMY = 2;
 static const int HP_DEFAULT = 5;
 static const double EXPLOSION_WIDTH = 85;
 static const double EXPLOSION_HEIGHT = 51;
 static const int NUM_OF_FRAME = 8;
 static const int TYPE_ENEMY = 3;
 static const int kMenuItemNum = 3;
+static const int line_y = 700;
 static Mix_Chunk* sound_bullet;
 
 namespace BG

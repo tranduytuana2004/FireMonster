@@ -8,7 +8,6 @@ class Bullet : public Object
 private:
     int x;
     int y;
-    int speed;
     bool isMove;
 
 public:

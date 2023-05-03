@@ -23,9 +23,10 @@ void Bullet::enemy_fire(int score, double direc)
     {
         isMove = false;
     }
-    if(score >= 10 && (1/direc) > -sqrt(3) && (1/direc) < sqrt(3) )
+    if(score >= 500 && (1/direc) > -sqrt(3) && (1/direc) < sqrt(3) )
     {
             rect.x += (1/direc) * SPEED_BULLET_ENEMY;
+            SPEED_BULLET_ENEMY = 3;
     }
         rect.y += SPEED_BULLET_ENEMY;
 }

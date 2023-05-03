@@ -24,8 +24,8 @@ int main(int argc, char* argv[])
     initMenu(renderer,quit);
 
     /// BACKGROUND
-    int backgr_main_y = 0;
-    int backgr_main_y_ = SCREEN_HEIGHT;
+    int bg_main_first = 0;
+    int bg_main_sec = SCREEN_HEIGHT;
     int backgr_1_y = 0;
     int backgr_2_y = SCREEN_HEIGHT;
     int backgr_3_y = SCREEN_HEIGHT*2;
@@ -37,13 +37,21 @@ int main(int argc, char* argv[])
     SDL_Texture* Background_3 = loadTexture(renderer,"C:\\Users\\ASUS\\OneDrive\\Documents\\GitHub\\LTNC_main\\FireMonster\\Fire_Monster\\image\\bg3.png");
     SDL_Texture* Background_4 = loadTexture(renderer,"C:\\Users\\ASUS\\OneDrive\\Documents\\GitHub\\LTNC_main\\FireMonster\\Fire_Monster\\image\\bg4.png");
     SDL_Texture* Line = loadTexture(renderer,"C:\\Users\\ASUS\\OneDrive\\Documents\\GitHub\\LTNC_main\\FireMonster\\Fire_Monster\\image\\line.png");
-    SDL_Rect rect_line = {0,700,640,40};
+    SDL_Rect rect_line = {0,line_y,640,40};
 
     /// Plane
     Plane plane(renderer);
     Explosion exp_plane(renderer,"C:\\Users\\ASUS\\OneDrive\\Documents\\GitHub\\LTNC_main\\FireMonster\\Fire_Monster\\image\\BlurPlane.png");
     exp_plane.set_clip();
     int ex;
+
+    /// Sound
+    Mix_Chunk* sound_heart;
+    sound_heart = Mix_LoadWAV("C:\\Users\\ASUS\\OneDrive\\Documents\\GitHub\\LTNC_main\\FireMonster\\Fire_Monster\\music\\heart_sound.wav");
+    Mix_Chunk* sound_main;
+    sound_main = Mix_LoadWAV("C:\\Users\\ASUS\\OneDrive\\Documents\\GitHub\\LTNC_main\\FireMonster\\Fire_Monster\\music\\main_sound.wav");
+    Mix_PlayChannel(-1, sound_main,0);
+
 
     /// Mark
     TextObject mark;
@@ -106,16 +114,17 @@ int main(int argc, char* argv[])
 
         SDL_RenderCopy(renderer,Line,NULL,&rect_line);
 
-        backgr_main_y_ = backgr_main_y + SCREEN_HEIGHT;
-        SDL_Rect up_backgrmain2 = {0, backgr_main_y_, SCREEN_WIDTH, SCREEN_HEIGHT};
+        /// slide background
+        bg_main_sec = bg_main_first + SCREEN_HEIGHT;
+        SDL_Rect up_backgrmain2 = {0, bg_main_sec, SCREEN_WIDTH, SCREEN_HEIGHT};
 
         SDL_RenderCopy(renderer, Background, NULL, &up_backgrmain2);
 
-        backgr_main_y -= 1;
-        SDL_Rect up_backgrmain1 = {0, backgr_main_y, SCREEN_WIDTH, SCREEN_HEIGHT};
-        if( backgr_main_y <= -SCREEN_HEIGHT )
+        bg_main_first -= 1;
+        SDL_Rect up_backgrmain1 = {0, bg_main_first, SCREEN_WIDTH, SCREEN_HEIGHT};
+        if( bg_main_first <= -SCREEN_HEIGHT )
         {
-            backgr_main_y = 0;
+            bg_main_first = 0;
         }
 
         SDL_RenderCopy(renderer, Background, NULL, &up_backgrmain1);
@@ -143,6 +152,7 @@ int main(int argc, char* argv[])
 
         plane.update(renderer,sound_bullet);
 
+        /// Collision
         for (int i = 0; i <= NUMBER_OF_ENEMY - 1; i++)
         {
 			if(!list_enemy.at(i).isKilled())
@@ -181,9 +191,9 @@ int main(int argc, char* argv[])
                         list_enemy.at(i).clear_bullet();
                     }
 			    }
-			    if( list_enemy.at(i).getRect().y == 700 )
+			    if( list_enemy.at(i).getRect().y == line_y )
                 {
-                    score -= 5;
+                    score -= 10;
                 }
 			}
 
@@ -191,14 +201,6 @@ int main(int argc, char* argv[])
 
             list_enemy.at(i).update(renderer,score,direc);
 		}
-
-        heart.setStatus(true);
-        if( heart.is_Move() && plane.hp < 5)
-        {
-            heart.icon_move();
-
-            heart.show(renderer);
-        }
 
 		if ( ex < NUM_OF_FRAME )
         {
@@ -211,9 +213,18 @@ int main(int argc, char* argv[])
             plane.isShot = false;
         }
 
+        /// heart check
+        heart.setStatus(true);
+        if( heart.is_Move() && plane.hp < 5)
+        {
+            heart.icon_move();
+
+            heart.show(renderer);
+        }
         if( checkCollision(heart.getRect(),plane.getRect()) )
         {
             plane.hp++;
+            Mix_PlayChannel(-1, sound_heart,0);
             heart_x = rand() % (SCREEN_WIDTH - 20 -10) + 1;
             heart_y = -(SCREEN_HEIGHT);
             heart.setPos(heart_x,heart_y);
