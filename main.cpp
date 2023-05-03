@@ -31,25 +31,25 @@ int main(int argc, char* argv[])
     int backgr_3_y = SCREEN_HEIGHT*2;
     int backgr_4_y = SCREEN_HEIGHT*3;
 
-    SDL_Texture* Background = loadTexture(renderer, "C:\\Users\\ASUS\\OneDrive\\Documents\\GitHub\\LTNC_main\\FireMonster\\Fire_Monster\\image\\background.png");
-    SDL_Texture* Background_1 = loadTexture(renderer,"C:\\Users\\ASUS\\OneDrive\\Documents\\GitHub\\LTNC_main\\FireMonster\\Fire_Monster\\image\\bg1.png");
-    SDL_Texture* Background_2 = loadTexture(renderer,"C:\\Users\\ASUS\\OneDrive\\Documents\\GitHub\\LTNC_main\\FireMonster\\Fire_Monster\\image\\bg2.png");
-    SDL_Texture* Background_3 = loadTexture(renderer,"C:\\Users\\ASUS\\OneDrive\\Documents\\GitHub\\LTNC_main\\FireMonster\\Fire_Monster\\image\\bg3.png");
-    SDL_Texture* Background_4 = loadTexture(renderer,"C:\\Users\\ASUS\\OneDrive\\Documents\\GitHub\\LTNC_main\\FireMonster\\Fire_Monster\\image\\bg4.png");
-    SDL_Texture* Line = loadTexture(renderer,"C:\\Users\\ASUS\\OneDrive\\Documents\\GitHub\\LTNC_main\\FireMonster\\Fire_Monster\\image\\line.png");
+    SDL_Texture* Background = loadTexture(renderer, "image\\background.png");
+    SDL_Texture* Background_1 = loadTexture(renderer,"image\\bg1.png");
+    SDL_Texture* Background_2 = loadTexture(renderer,"image\\bg2.png");
+    SDL_Texture* Background_3 = loadTexture(renderer,"image\\bg3.png");
+    SDL_Texture* Background_4 = loadTexture(renderer,"image\\bg4.png");
+    SDL_Texture* Line = loadTexture(renderer,"image\\line.png");
     SDL_Rect rect_line = {0,line_y,640,40};
 
     /// Plane
     Plane plane(renderer);
-    Explosion exp_plane(renderer,"C:\\Users\\ASUS\\OneDrive\\Documents\\GitHub\\LTNC_main\\FireMonster\\Fire_Monster\\image\\BlurPlane.png");
+    Explosion exp_plane(renderer,"image\\BlurPlane.png");
     exp_plane.set_clip();
     int ex;
 
     /// Sound
     Mix_Chunk* sound_heart;
-    sound_heart = Mix_LoadWAV("C:\\Users\\ASUS\\OneDrive\\Documents\\GitHub\\LTNC_main\\FireMonster\\Fire_Monster\\music\\heart_sound.wav");
+    sound_heart = Mix_LoadWAV("music\\heart_sound.wav");
     Mix_Chunk* sound_main;
-    sound_main = Mix_LoadWAV("C:\\Users\\ASUS\\OneDrive\\Documents\\GitHub\\LTNC_main\\FireMonster\\Fire_Monster\\music\\main_sound.wav");
+    sound_main = Mix_LoadWAV("music\\main_sound.wav");
     Mix_PlayChannel(-1, sound_main,0);
 
 
@@ -89,7 +89,7 @@ int main(int argc, char* argv[])
 
 	/// Hearticon
 	Bullet heart;
-	heart.setImg(renderer,"C:\\Users\\ASUS\\OneDrive\\Documents\\GitHub\\LTNC_main\\FireMonster\\Fire_Monster\\image\\heart_icon.png");
+	heart.setImg(renderer,"image\\heart_icon.png");
 	heart.setSize(32,32);
 	heart.setStatus(false);
 	int heart_x = 200;
@@ -258,9 +258,9 @@ void initMenu(SDL_Renderer* renderer,bool& quit)
     SDL_Texture* Help = NULL;
     bool IsRunningMenu = false;
     bool help = false;
-    fontMenu = TTF_OpenFont("C:\\Users\\ASUS\\OneDrive\\Documents\\GitHub\\LTNC_main\\FireMonster\\Fire_Monster\\font\\VCR_OSD_MONO_1.001.ttf",100);
-    Menu = loadTexture(renderer,"C:\\Users\\ASUS\\OneDrive\\Documents\\GitHub\\LTNC_main\\FireMonster\\Fire_Monster\\image\\FIRE_MONSTER.png");
-    Help = loadTexture(renderer,"C:\\Users\\ASUS\\OneDrive\\Documents\\GitHub\\LTNC_main\\FireMonster\\Fire_Monster\\image\\help.png");
+    fontMenu = TTF_OpenFont("font\\VCR_OSD_MONO_1.001.ttf",100);
+    Menu = loadTexture(renderer,"image\\FIRE_MONSTER.png");
+    Help = loadTexture(renderer,"image\\help.png");
 
     SDL_Rect pos_arr[kMenuItemNum];
     pos_arr[0].x = 200;

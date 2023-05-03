@@ -17,15 +17,15 @@ Plane::Plane(SDL_Renderer* renderer)
 
     setPos(x,y);
 
-    setImg(renderer, "C:\\Users\\ASUS\\OneDrive\\Documents\\GitHub\\LTNC_main\\FireMonster\\Fire_Monster\\image\\Plane.png");
+    setImg(renderer, "image\\Plane.png");
 
-    bullet.setImg(renderer, "C:\\Users\\ASUS\\OneDrive\\Documents\\GitHub\\LTNC_main\\FireMonster\\Fire_Monster\\image\\Bullet.png");
+    bullet.setImg(renderer, "image\\Bullet.png");
 
     bullet.setPos(x,y);
 
     bullet.setSize(WIDTH_BULLET_PLANE,HEIGHT_BULLET_PLANE);
 
-    sound_bullet = Mix_LoadWAV("C:\\Users\\ASUS\\OneDrive\\Documents\\GitHub\\LTNC_main\\FireMonster\\Fire_Monster\\music\\laser1.wav");
+    sound_bullet = Mix_LoadWAV("music\\laser1.wav");
 }
 
 void Plane::move(SDL_Event event)

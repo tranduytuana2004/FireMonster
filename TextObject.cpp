@@ -17,7 +17,7 @@ TextObject::~TextObject()
 
 void TextObject::initText(TTF_Font*& fontText)
 {
-    fontText = TTF_OpenFont("C:\\Users\\ASUS\\OneDrive\\Documents\\GitHub\\LTNC_main\\FireMonster\\Fire_Monster\\font\\Minecraft.ttf",72);
+    fontText = TTF_OpenFont("font\\Minecraft.ttf",72);
     if(fontText == NULL)
     {
         cout << "Font Error" << endl;
